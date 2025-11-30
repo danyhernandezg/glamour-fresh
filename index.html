@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glamour & Fresh - Moda Elegante</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #8a2be2;
+            --secondary-color: #ff69b4;
+            --dark-color: #333;
+            --light-color: #f4f4f4;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --warning-color: #ffc107;
+            --info-color: #17a2b8;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+        }
+
+        .btn-whatsapp:hover {
+            background: #128C7E;
+        }
+
+        /* Header y navegación */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            background: rgba(138, 43, 226, 0.1);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        /* Hero section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Secciones */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background: var(--secondary-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Quiénes somos */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Catálogo */
+        .categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .category-btn {
+            padding: 8px 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .category-btn.active, .category-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .product-rating {
+            color: var(--warning-color);
+            margin-bottom: 15px;
+        }
+
+        /* Formulario de contacto */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Login/Registro */
+        .auth-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .auth-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .auth-tab {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            border-bottom: 3px solid transparent;
+        }
+
+        .auth-tab.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .auth-content {
+            display: none;
+        }
+
+        .auth-content.active {
+            display: block;
+        }
+
+        /* Comentarios */
+        .comments-section {
+            margin-top: 40px;
+        }
+
+        .comment-form {
+            margin-bottom: 30px;
+        }
+
+        .comment {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .comment-author {
+            font-weight: 600;
+        }
+
+        .comment-date {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .comment-rating {
+            color: var(--warning-color);
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: var(--secondary-color);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #ccc;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Botón de WhatsApp flotante */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            nav {
+                width: 100%;
+                margin-top: 15px;
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0 0 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header y navegación -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">Glamour<span>&</span>Fresh</div>
+            <button class="mobile-menu-btn">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#nosotros">Quiénes Somos</a></li>
+                    <li><a href="#catalogo">Catálogo</a></li>
+                    <li><a href="#contacto">Contáctenos</a></li>
+                    <li><a href="#" id="auth-link">Iniciar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sección Hero -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <h1>Moda Elegante para Damas y Caballeros</h1>
+            <p>Descubre nuestra exclusiva colección de camisetas, pantalones, jeans, blazers, jackets, zapatos y lociones. Calidad y estilo en un solo lugar.</p>
+            <a href="#catalogo" class="btn">Ver Catálogo</a>
+        </div>
+    </section>
+
+    <!-- Sección Quiénes Somos -->
+    <section id="nosotros">
+        <div class="container">
+            <div class="section-title">
+                <h2>Quiénes Somos</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>En <strong>Glamour & Fresh</strong> nos dedicamos a ofrecer la mejor moda para damas y caballeros, combinando elegancia, calidad y estilo en cada una de nuestras prendas.</p>
+                    <p>Nuestra misión es brindar a nuestros clientes una experiencia de compra única, con productos de alta calidad y un servicio personalizado que supere sus expectativas.</p>
+                    <p>Contamos con una amplia gama de productos que incluye camisetas, pantalones, jeans, blazers, jackets, zapatos y lociones, todos disponibles en diferentes tallas y estilos para satisfacer todos los gustos.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Nuestra tienda">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Catálogo -->
+    <section id="catalogo">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestro Catálogo</h2>
+            </div>
+            <div class="categories">
+                <button class="category-btn active" data-category="all">Todos</button>
+                <button class="category-btn" data-category="camisetas">Camisetas</button>
+                <button class="category-btn" data-category="pantalones">Pantalones</button>
+                <button class="category-btn" data-category="jeans">Jeans</button>
+                <button class="category-btn" data-category="blazers">Blazers</button>
+                <button class="category-btn" data-category="jackets">Jackets</button>
+                <button class="category-btn" data-category="zapatos">Zapatos</button>
+                <button class="category-btn" data-category="lociiones">Lociiones</button>
+            </div>
+            <div class="products-grid">
+                <!-- Productos se cargarán dinámicamente con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contáctenos</h2>
+            </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nombre Completo</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Asunto</label>
+                        <input type="text" id="subject" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de Login/Registro -->
+    <div id="auth-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; align-items: center; justify-content: center;">
+        <div class="auth-container">
+            <div class="auth-form">
+                <div class="auth-tabs">
+                    <div class="auth-tab active" data-tab="login">Iniciar Sesión</div>
+                    <div class="auth-tab" data-tab="register">Registrarse</div>
+                </div>
+                <div class="auth-content active" id="login-content">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="login-email">Correo Electrónico</label>
+                            <input type="email" id="login-email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Contraseña</label>
+                            <input type="password" id="login-password" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn">Iniciar Sesión</button>
+                    </form>
+                </div>
+                <div class="auth-content" id="register-content">
+                    <form id="registerForm">
+                        <div class="form-group">
+                            <label for="register-name">Nombre Completo</label>
+                            <input type="text" id="register-name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-email">Correo Electrónico</label>
+                            <input type="email" id="register-email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-password">Contraseña</label>
+                            <input type="password" id="register-password" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-confirm">Confirmar Contraseña</label>
+                            <input type="password" id="register-confirm" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn">Registrarse</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección Comentarios (solo visible para usuarios registrados) -->
+    <section id="comentarios" style="display: none;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Comentarios y Valoraciones</h2>
+            </div>
+            <div class="comment-form">
+                <form id="commentForm">
+                    <div class="form-group">
+                        <label for="product-select">Seleccionar Producto</label>
+                        <select id="product-select" class="form-control" required>
+                            <!-- Opciones se cargarán dinámicamente -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="rating">Puntuación</label>
+                        <select id="rating" class="form-control" required>
+                            <option value="5">★★★★★ Excelente</option>
+                            <option value="4">★★★★ Muy Bueno</option>
+                            <option value="3">★★★ Bueno</option>
+                            <option value="2">★★ Regular</option>
+                            <option value="1">★ Malo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">Comentario</label>
+                        <textarea id="comment" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Enviar Comentario</button>
+                </form>
+            </div>
+            <div class="comments-section">
+                <!-- Comentarios se cargarán dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Glamour & Fresh</h3>
+                    <p>Tu destino para la moda elegante. Ofrecemos las mejores prendas y accesorios para damas y caballeros.</p>
+                    <div class="social-links">
+                        <a href="#"><i>FB</i></a>
+                        <a href="#"><i>IG</i></a>
+                        <a href="#"><i>TW</i></a>
+                        <a href="#"><i>PT</i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#nosotros">Quiénes Somos</a></li>
+                        <li><a href="#catalogo">Catálogo</a></li>
+                        <li><a href="#contacto">Contáctenos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Categorías</h3>
+                    <ul>
+                        <li><a href="#catalogo" data-category="camisetas">Camisetas</a></li>
+                        <li><a href="#catalogo" data-category="pantalones">Pantalones</a></li>
+                        <li><a href="#catalogo" data-category="jeans">Jeans</a></li>
+                        <li><a href="#catalogo" data-category="blazers">Blazers</a></li>
+                        <li><a href="#catalogo" data-category="jackets">Jackets</a></li>
+                        <li><a href="#catalogo" data-category="zapatos">Zapatos</a></li>
+                        <li><a href="#catalogo" data-category="lociiones">Lociiones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li>📍 Dirección: Av. Principal 123, Ciudad</li>
+                        <li>📞 Teléfono: +1 234 567 890</li>
+                        <li>✉️ Email: info@glamourfresh.com</li>
+                        <li>🕒 Horario: Lunes a Sábado 9:00 - 20:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Glamour & Fresh. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón de WhatsApp flotante -->
+    <a href="https://wa.me/1234567890?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20sus%20productos" class="whatsapp-float" target="_blank">
+        <i>WA</i>
+    </a>
+
+    <script>
+        // Datos de productos
+        const products = [
+            { id: 1, name: "Camiseta Básica Mujer", category: "camisetas", price: "$25.00", image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60", rating: 4 },
+            { id: 2, name: "Camiseta Básica Hombre", category: "camisetas", price: "$25.00", image: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60", rating: 5 },
+            { id: 3, name: "Pantalón de Vestir Mujer", category: "pantalones", price: "$45.00", image: "https://images.unsplash.com/photo-1582418702059-97ebafb35d09?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60", rating: 4 },
+            { id: 4, name: "Pantalón de Vestir Hombre", category: "pantalones", price: "$45.00", image: "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60", rating: 4 },
+            { id: 5, name: "Jeans Ajustados Mujer", category: "jeans", price: "$35.00", image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60", rating: 5 },
+            { id: 6, name: "Jeans Clásicos Hombre", category: "jeans", price: "$35.00", image: "https://images.unsplash.com/photo-1542272604-787c3835535d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60", rating: 4 },
+            { id: 7, name: "Blazer Elegante Mujer", category: "blazers", price: "$75.00", image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60", rating: 5 },
+            { id: 8, name: "Blazer Formal Hombre", category: "blazers", price: "$75.00", image: "https://images.unsplash.com/photo-1593030103066-0093718efeb9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60", rating: 4 },
+            { id: 9, name: "Jacket Casual Mujer", category: "jackets", price: "$65.00", image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60", rating: 4 },
+            { id: 10, name: "Jacket Casual Hombre", category: "jackets", price: "$65.00", image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60", rating: 5 },
+            { id: 11, name: "Zapatos de Tacón Mujer", category: "zapatos", price: "$55.00", image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60", rating: 4 },
+            { id: 12, name: "Zapatos Formales Hombre", category: "zapatos", price: "$55.00", image: "https://images.unsplash.com/photo-1463100099107-aa0980c362e6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60", rating: 5 },
+            { id: 13, name: "Loción Floral Mujer", category: "lociiones", price: "$30.00", image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60", rating: 4 },
+            { id: 14, name: "Loción Fresca Hombre", category: "lociiones", price: "$30.00", image: "https://images.unsplash.com/photo-1594736797933-d0c64a0d92c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60", rating: 4 }
+        ];
+
+        // Estado de la aplicación
+        let currentUser = null;
+        let comments = [];
+
+        // DOM Elements
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const productsGrid = document.querySelector('.products-grid');
+        const authLink = document.getElementById('auth-link');
+        const authModal = document.getElementById('auth-modal');
+        const authTabs = document.querySelectorAll('.auth-tab');
+        const authContents = document.querySelectorAll('.auth-content');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const contactForm = document.getElementById('contactForm');
+        const commentSection = document.getElementById('comentarios');
+        const commentForm = document.getElementById('commentForm');
+        const productSelect = document.getElementById('product-select');
+        const commentsSection = document.querySelector('.comments-section');
+
+        // Inicializar la aplicación
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cargar productos
+            renderProducts('all');
+            
+            // Configurar menú móvil
+            mobileMenuBtn.addEventListener('click', function() {
+                nav.classList.toggle('active');
+            });
+            
+            // Configurar filtros de categoría
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    // Actualizar botones activos
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filtrar productos
+                    renderProducts(category);
+                });
+            });
+            
+            // Configurar autenticación
+            authLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                authModal.style.display = 'flex';
+            });
+            
+            // Cerrar modal al hacer clic fuera
+            authModal.addEventListener('click', function(e) {
+                if (e.target === authModal) {
+                    authModal.style.display = 'none';
+                }
+            });
+            
+            // Cambiar entre pestañas de login/registro
+            authTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Actualizar pestañas activas
+                    authTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Mostrar contenido correspondiente
+                    authContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === `${tabId}-content`) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Manejar login
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = document.getElementById('login-email').value;
+                const password = document.getElementById('login-password').value;
+                
+                // Simular autenticación
+                if (email && password) {
+                    currentUser = {
+                        name: email.split('@')[0],
+                        email: email
+                    };
+                    
+                    authModal.style.display = 'none';
+                    authLink.textContent = currentUser.name;
+                    commentSection.style.display = 'block';
+                    
+                    // Cargar productos en el selector de comentarios
+                    loadProductOptions();
+                    
+                    // Cargar comentarios existentes
+                    loadComments();
+                    
+                    alert('¡Inicio de sesión exitoso! Ahora puedes comentar y valorar productos.');
+                } else {
+                    alert('Por favor, completa todos los campos.');
+                }
+            });
+            
+            // Manejar registro
+            registerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('register-name').value;
+                const email = document.getElementById('register-email').value;
+                const password = document.getElementById('register-password').value;
+                const confirm = document.getElementById('register-confirm').value;
+                
+                if (password !== confirm) {
+                    alert('Las contraseñas no coinciden.');
+                    return;
+                }
+                
+                if (name && email && password) {
+                    currentUser = {
+                        name: name,
+                        email: email
+                    };
+                    
+                    authModal.style.display = 'none';
+                    authLink.textContent = currentUser.name;
+                    commentSection.style.display = 'block';
+                    
+                    // Cargar productos en el selector de comentarios
+                    loadProductOptions();
+                    
+                    alert('¡Registro exitoso! Ahora puedes comentar y valorar productos.');
+                } else {
+                    alert('Por favor, completa todos los campos.');
+                }
+            });
+            
+            // Manejar formulario de contacto
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('¡Mensaje enviado! Nos pondremos en contacto contigo pronto.');
+                contactForm.reset();
+            });
+            
+            // Manejar formulario de comentarios
+            commentForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                if (!currentUser) {
+                    alert('Debes iniciar sesión para comentar.');
+                    return;
+                }
+                
+                const productId = parseInt(productSelect.value);
+                const rating = parseInt(document.getElementById('rating').value);
+                const commentText = document.getElementById('comment').value;
+                
+                const newComment = {
+                    id: comments.length + 1,
+                    productId: productId,
+                    userId: currentUser.email,
+                    userName: currentUser.name,
+                    rating: rating,
+                    text: commentText,
+                    date: new Date().toLocaleDateString('es-ES')
+                };
+                
+                comments.push(newComment);
+                saveComments();
+                loadComments();
+                commentForm.reset();
+                
+                alert('¡Comentario publicado con éxito!');
+            });
+        });
+
+        // Función para renderizar productos
+        function renderProducts(category) {
+            productsGrid.innerHTML = '';
+            
+            const filteredProducts = category === 'all' 
+                ? products 
+                : products.filter(product => product.category === category);
+            
+            filteredProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                
+                // Generar estrellas de valoración
+                let stars = '';
+                for (let i = 1; i <= 5; i++) {
+                    stars += i <= product.rating ? '★' : '☆';
+                }
+                
+                productCard.innerHTML = `
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">${product.name}</h3>
+                        <div class="product-price">${product.price}</div>
+                        <div class="product-rating">${stars}</div>
+                        <button class="btn">Ver Detalles</button>
+                    </div>
+                `;
+                
+                productsGrid.appendChild(productCard);
+            });
+        }
+
+        // Función para cargar opciones de productos en el selector de comentarios
+        function loadProductOptions() {
+            productSelect.innerHTML = '';
+            
+            products.forEach(product => {
+                const option = document.createElement('option');
+                option.value = product.id;
+                option.textContent = product.name;
+                productSelect.appendChild(option);
+            });
+        }
+
+        // Función para cargar comentarios
+        function loadComments() {
+            commentsSection.innerHTML = '';
+            
+            // Filtrar comentarios para mostrar solo los del usuario actual
+            const userComments = comments.filter(comment => comment.userId === currentUser.email);
+            
+            if (userComments.length === 0) {
+                commentsSection.innerHTML = '<p>Aún no has realizado ningún comentario.</p>';
+                return;
+            }
+            
+            userComments.forEach(comment => {
+                const product = products.find(p => p.id === comment.productId);
+                if (!product) return;
+                
+                // Generar estrellas de valoración
+                let stars = '';
+                for (let i = 1; i <= 5; i++) {
+                    stars += i <= comment.rating ? '★' : '☆';
+                }
+                
+                const commentElement = document.createElement('div');
+                commentElement.className = 'comment';
+                commentElement.innerHTML = `
+                    <div class="comment-header">
+                        <div class="comment-author">${comment.userName}</div>
+                        <div class="comment-date">${comment.date}</div>
+                    </div>
+                    <div class="comment-product">Producto: ${product.name}</div>
+                    <div class="comment-rating">${stars}</div>
+                    <div class="comment-text">${comment.text}</div>
+                `;
+                
+                commentsSection.appendChild(commentElement);
+            });
+        }
+
+        // Función para guardar comentarios (simulación)
+        function saveComments() {
+            // En una aplicación real, aquí se enviarían los datos al servidor
+            localStorage.setItem('glamourFreshComments', JSON.stringify(comments));
+        }
+
+        // Función para cargar comentarios guardados (simulación)
+        function loadSavedComments() {
+            const savedComments = localStorage.getItem('glamourFreshComments');
+            if (savedComments) {
+                comments = JSON.parse(savedComments);
+            }
+        }
+
+        // Cargar comentarios guardados al iniciar
+        loadSavedComments();
+    </script>
+</body>
+</html>
